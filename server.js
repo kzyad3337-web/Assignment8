@@ -19,6 +19,16 @@ app.use((req, res, next) => {
   next();
 });
 
+app.get("/hello", (req, res) => {
+  res.send("Hello! My name is ZIAD KHALED. Welcome to my Web Programming Assignment 8.");
+});
+
+app.get("/robots.txt", (req, res) => {
+  res.type("text/plain");
+  res.send("User-agent: *\nDisallow:");
+});
+
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
 });
+ 
