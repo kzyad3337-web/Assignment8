@@ -81,7 +81,11 @@ app.get("/api/admin", (req, res) => {
     error: "Forbidden"
   });
 });
-
+app.get("/api/stats", (req, res) => {
+  res.json({
+    requestsServed: requestsServed
+  });
+});
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
 });
