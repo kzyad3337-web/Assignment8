@@ -18,6 +18,7 @@ app.use((req, res, next) => {
 
   next();
 });
+app.use(express.static("public"));
 
 app.get("/hello", (req, res) => {
   res.send("Hello! My name is ZIAD KHALED. Welcome to my Web Programming Assignment 8.");
@@ -85,6 +86,20 @@ app.get("/api/stats", (req, res) => {
   res.json({
     requestsServed: requestsServed
   });
+});
+
+app.use((req, res, next) => {
+  if (req.path.startsWith("/api/")) {
+    return res.status(404).json({
+      error: "Not found"
+    });
+  }
+
+  next();
+});
+
+app.use((req, res) => {
+  res.status(404).send("Page not found");
 });
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
