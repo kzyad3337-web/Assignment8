@@ -70,6 +70,12 @@ app.get("/api/headers", (req, res) => {
   });
 });
 
+app.post("/api/subscribe", (req, res) => {
+  res.status(201).json({
+    subscribed: true
+  });
+});
+
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
 });
