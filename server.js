@@ -32,6 +32,51 @@ app.get("/old-page", (req, res) => {
   res.redirect("/hello");
 });
 
+app.get("/api/courses", (req, res) => {
+  const courses = [
+    {
+      id: 1,
+      title: "Web Programming",
+      credits: 4
+    },
+    {
+      id: 2,
+      title: "Database Management",
+      credits: 3
+    },
+    {
+      id: 3,
+      title: "Computer Networks",
+      credits: 4
+    }
+  ];
+
+  res.json(courses);
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
 });
