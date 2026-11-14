@@ -1,7 +1,11 @@
 
 import express from "express";
+import path from "node:path";
+import { fileURLToPath } from "node:url";
 
 const app = express();
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 const PORT = process.env.PORT || 3000;
 
@@ -18,8 +22,7 @@ app.use((req, res, next) => {
 
   next();
 });
-app.use(express.static("public"));
-
+app.use(express.static(path.join(__dirname, "public")));
 app.get("/hello", (req, res) => {
   res.send("Hello! My name is ZIAD KHALED. Welcome to my Web Programming Assignment 8.");
 });
