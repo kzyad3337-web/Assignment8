@@ -15,9 +15,11 @@ app.use((req, res, next) => {
   const timestamp = new Date().toISOString();
 
   console.log(
-    `[${timestamp}] ${req.method} ${req.url}`
-  );
+    `[${timestamp}] ${req.method} ${req.url}`);
 
+  next();
+});
+app.use((req, res, next) => {
   requestsServed++;
 
   next();
@@ -91,8 +93,12 @@ app.get("/api/stats", (req, res) => {
   });
 });
 
+
 app.use((req, res, next) => {
-  if (req.path.startsWith("/api/")) {
+  if (
+    req.path === "/api" ||
+    req.path.startsWith("/api/")
+  ) {
     return res.status(404).json({
       error: "Not found"
     });
@@ -105,6 +111,7 @@ app.use((req, res) => {
   res.status(404).send("Page not found");
 });
 app.listen(PORT, () => {
-  console.log(`Server is running on port ${PORT}`);
+      console.log(`Server is running at http://localhost:${PORT}`);
+
 });
  
