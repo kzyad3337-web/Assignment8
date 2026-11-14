@@ -28,6 +28,10 @@ app.get("/robots.txt", (req, res) => {
   res.send("User-agent: *\nDisallow:");
 });
 
+app.get("/old-page", (req, res) => {
+  res.redirect("/hello");
+});
+
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
 });
