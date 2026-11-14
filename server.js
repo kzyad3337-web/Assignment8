@@ -63,25 +63,12 @@ app.get("/api/status", (req, res) => {
 });
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+app.get("/api/headers", (req, res) => {
+  res.json({
+    userAgent: req.get("User-Agent"),
+    accept: req.get("Accept")
+  });
+});
 
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
