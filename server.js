@@ -54,7 +54,13 @@ app.get("/api/courses", (req, res) => {
   res.json(courses);
 });
 
-
+app.get("/api/status", (req, res) => {
+  res.json({
+    status: "running",
+    nodeVersion: process.version,
+    uptimeSeconds: Math.floor(process.uptime())
+  });
+});
 
 
 
